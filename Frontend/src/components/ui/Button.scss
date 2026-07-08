@@ -1,0 +1,128 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.btn {
+  @include button-reset();
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border-radius: $radius-full;
+  font-weight: $fw-semibold;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow $transition-base, background $transition-base, border-color $transition-base, color $transition-base;
+
+  &--full { width: 100%; }
+
+  // ---------- Sizes ----------
+  &--sm { padding: $space-2 $space-4; font-size: $fs-sm; }
+  &--md { padding: $space-3 $space-6; font-size: $fs-base; }
+  &--lg { padding: $space-4 $space-8; font-size: $fs-md; }
+
+  // ---------- Content ----------
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__icon {
+    display: inline-flex;
+    font-size: 1.1em;
+    &--right { order: 2; }
+  }
+
+  &__spinner {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    animation: btn-spin 0.7s linear infinite;
+  }
+
+  // ---------- Ripple ----------
+  &__ripple-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  &:active .btn__ripple-layer::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+    animation: btn-ripple 0.5s ease-out;
+  }
+
+  // ---------- Variants ----------
+  &--primary {
+    background: $gradient-primary;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(167, 139, 250, 0.25);
+    &:hover { box-shadow: $glow-primary, 0 10px 30px rgba(167, 139, 250, 0.35); }
+    &:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+  }
+
+  &--secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: $color-text;
+    border: 1px solid $color-border;
+    backdrop-filter: blur($blur-sm);
+    &:hover {
+      border-color: $color-border-hover;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid rgba($color-primary, 0.4);
+    &:hover {
+      background: rgba($color-primary, 0.08);
+      border-color: $color-primary;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-muted;
+    &:hover { color: $color-text; background: rgba(255, 255, 255, 0.06); }
+  }
+
+  &--danger {
+    background: linear-gradient(135deg, #f87171, #fb7185);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(248, 113, 113, 0.25);
+    &:hover { box-shadow: 0 0 30px rgba(248, 113, 113, 0.35); }
+  }
+
+  @include focus-ring();
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes btn-ripple {
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}

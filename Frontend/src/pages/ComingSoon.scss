@@ -1,0 +1,34 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__text {
+    color: $color-muted;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  &__label {
+    font-size: $fs-xs;
+    color: $color-faint;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-2;
+  }
+
+  &__endpoints {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    li {
+      font-family: $font-mono;
+      font-size: $fs-sm;
+      color: $color-accent;
+    }
+  }
+}

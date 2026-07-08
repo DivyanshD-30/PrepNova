@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  border-radius: $radius-full;
+  font-weight: $fw-semibold;
+  white-space: nowrap;
+  border: 1px solid transparent;
+
+  &--sm { padding: 0.2rem $space-3; font-size: $fs-xs; }
+  &--md { padding: $space-1 $space-4; font-size: $fs-sm; }
+
+  &__icon { display: inline-flex; font-size: 1em; }
+
+  &--default {
+    background: rgba(255, 255, 255, 0.06);
+    color: $color-muted;
+    border-color: $color-border;
+  }
+  &--primary {
+    background: rgba($color-primary, 0.12);
+    color: $color-primary;
+    border-color: rgba($color-primary, 0.3);
+  }
+  &--secondary {
+    background: rgba($color-secondary, 0.12);
+    color: $color-secondary;
+    border-color: rgba($color-secondary, 0.3);
+  }
+  &--accent {
+    background: rgba($color-accent, 0.12);
+    color: $color-accent;
+    border-color: rgba($color-accent, 0.3);
+  }
+  &--success {
+    background: rgba($color-success, 0.12);
+    color: $color-success;
+    border-color: rgba($color-success, 0.3);
+  }
+  &--warning {
+    background: rgba($color-warning, 0.12);
+    color: $color-warning;
+    border-color: rgba($color-warning, 0.3);
+  }
+  &--danger {
+    background: rgba($color-danger, 0.12);
+    color: $color-danger;
+    border-color: rgba($color-danger, 0.3);
+  }
+}

@@ -1,0 +1,213 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sidebar-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: $z-overlay;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+
+  @include below-lg { display: block; }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: $z-overlay + 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 11, 28, 0.75);
+  border-right: 1px solid $color-border;
+  backdrop-filter: blur($blur-lg);
+  -webkit-backdrop-filter: blur($blur-lg);
+  overflow: hidden;
+
+  @include below-lg {
+    transform: translateX(-100%);
+    transition: transform $transition-base;
+    width: 280px !important;
+
+    &--mobile-open { transform: translateX(0); }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-5 $space-5;
+    border-bottom: 1px solid $color-border;
+    min-height: $topbar-height;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    box-shadow: $glow-primary;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  &__brand-text { @include gradient-text(); }
+
+  &__mobile-close {
+    @include button-reset();
+    display: none;
+    color: $color-muted;
+    font-size: 1.2rem;
+    @include below-lg { display: inline-flex; }
+  }
+
+  &__nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: $space-4 $space-3;
+    @include custom-scrollbar();
+  }
+
+  &__group { margin-bottom: $space-5; }
+
+  &__group-label {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-faint;
+    padding: 0 $space-3;
+    margin-bottom: $space-2;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3 $space-3;
+    border-radius: $radius-md;
+    color: $color-muted;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: background $transition-fast, color $transition-fast;
+    position: relative;
+
+    &:hover { background: rgba(255, 255, 255, 0.05); color: $color-text; }
+
+    &-icon {
+      display: inline-flex;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    &-label { @include truncate(); }
+
+    &--active {
+      background: linear-gradient(135deg, rgba($color-primary, 0.18), rgba($color-secondary, 0.1));
+      color: $color-text;
+
+      .sidebar__link-icon { color: $color-primary; }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 60%;
+        border-radius: $radius-full;
+        background: $gradient-primary;
+      }
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid $color-border;
+    padding: $space-4;
+  }
+
+  &__collapse-btn {
+    @include button-reset();
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    color: $color-muted;
+    font-size: $fs-sm;
+    margin-bottom: $space-4;
+    width: 100%;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    transition: background $transition-fast, color $transition-fast;
+    &:hover { background: rgba(255, 255, 255, 0.05); color: $color-text; }
+
+    @include below-lg { display: none; }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-accent;
+    font-weight: $fw-bold;
+    color: #fff;
+  }
+
+  &__user-info {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &__user-name {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+    @include truncate();
+  }
+
+  &__user-email {
+    font-size: $fs-xs;
+    color: $color-faint;
+    @include truncate();
+  }
+
+  &__logout {
+    @include button-reset();
+    color: $color-muted;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: color $transition-fast;
+    &:hover { color: $color-danger; }
+  }
+
+  &--collapsed {
+    .sidebar__user-info { display: none; }
+    .sidebar__user { justify-content: center; }
+  }
+}

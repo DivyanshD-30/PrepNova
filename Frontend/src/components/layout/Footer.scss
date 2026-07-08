@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  position: relative;
+  z-index: $z-base;
+  border-top: 1px solid $color-border;
+  padding-top: $space-16;
+  background: linear-gradient(180deg, transparent, rgba($color-primary, 0.04));
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+    padding-bottom: $space-12;
+
+    @include md {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &__brand-col { max-width: 280px; }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+    margin-bottom: $space-4;
+  }
+
+  &__brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+  }
+
+  &__brand-text { @include gradient-text(); }
+
+  &__tagline {
+    font-size: $fs-sm;
+    line-height: 1.6;
+    margin-bottom: $space-5;
+  }
+
+  &__socials {
+    display: flex;
+    gap: $space-3;
+
+    a {
+      width: 36px;
+      height: 36px;
+      border-radius: $radius-full;
+      @include flex(row, center, center);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid $color-border;
+      color: $color-muted;
+      transition: color $transition-fast, border-color $transition-fast, transform $transition-fast;
+      &:hover { color: $color-primary; border-color: rgba($color-primary, 0.4); transform: translateY(-2px); }
+    }
+  }
+
+  &__col-title {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+    margin-bottom: $space-4;
+  }
+
+  &__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__col a {
+    font-size: $fs-sm;
+    color: $color-muted;
+    transition: color $transition-fast;
+    &:hover { color: $color-text; }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-3;
+    padding-block: $space-6;
+    border-top: 1px solid $color-border;
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+}

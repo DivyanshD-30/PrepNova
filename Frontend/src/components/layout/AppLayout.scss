@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.app-layout {
+  position: relative;
+  min-height: 100vh;
+
+  &__main {
+    margin-left: $sidebar-width;
+    transition: margin-left $transition-base;
+    position: relative;
+    z-index: $z-base;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    @include below-lg { margin-left: 0; }
+  }
+
+  &__content {
+    flex: 1;
+    padding: $space-6 $space-6 $space-16;
+
+    @include md { padding: $space-8 $space-8 $space-20; }
+    @include lg { padding: $space-10 $space-10 $space-20; }
+  }
+}

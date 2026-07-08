@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.empty-state {
+  @include flex(column, center, center, $space-4);
+  text-align: center;
+  padding: $space-16 $space-6;
+  border-radius: $radius-lg;
+  border: 1px dashed $color-border;
+  background: rgba(255, 255, 255, 0.02);
+
+  &--compact { padding: $space-10 $space-4; }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    opacity: 0.9;
+    font-size: 1.75rem;
+    margin-bottom: $space-2;
+    box-shadow: $glow-primary;
+
+    &--danger {
+      background: linear-gradient(135deg, $color-danger, #fb923c);
+      box-shadow: 0 0 30px rgba($color-danger, 0.3);
+    }
+  }
+
+  &--error { border-color: rgba($color-danger, 0.25); }
+
+  &__title {
+    font-size: $fs-lg;
+    color: $color-text;
+  }
+
+  &__desc {
+    max-width: 380px;
+    color: $color-muted;
+    font-size: $fs-sm;
+    line-height: 1.6;
+  }
+}

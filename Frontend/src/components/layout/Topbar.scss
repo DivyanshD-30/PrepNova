@@ -1,0 +1,106 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  height: $topbar-height;
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding-inline: $space-6;
+  background: rgba(5, 8, 22, 0.6);
+  backdrop-filter: blur($blur-md);
+  border-bottom: 1px solid $color-border;
+
+  @include below-lg { padding-inline: $space-4; }
+
+  &__menu-btn {
+    @include button-reset();
+    display: none;
+    font-size: 1.3rem;
+    color: $color-text;
+    @include below-lg { display: inline-flex; }
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $color-border;
+    transition: border-color $transition-fast, background $transition-fast;
+
+    &:hover, &:focus-within {
+      border-color: rgba($color-primary, 0.4);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: $color-text;
+      font-size: $fs-sm;
+      &::placeholder { color: $color-faint; }
+    }
+
+    @include below-md { max-width: none; }
+  }
+
+  &__search-icon { color: $color-faint; flex-shrink: 0; }
+
+  &__kbd {
+    font-size: $fs-xs;
+    color: $color-faint;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    padding: 0.1rem 0.4rem;
+    flex-shrink: 0;
+    @include below-md { display: none; }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-left: auto;
+  }
+
+  &__icon-btn {
+    @include button-reset();
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $color-border;
+    color: $color-text;
+    font-size: 1.05rem;
+    transition: background $transition-fast, border-color $transition-fast;
+    &:hover { background: rgba(255, 255, 255, 0.09); border-color: $color-border-hover; }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: $fw-bold;
+    @include flex(row, center, center);
+    box-shadow: 0 0 0 2px $color-bg;
+  }
+}

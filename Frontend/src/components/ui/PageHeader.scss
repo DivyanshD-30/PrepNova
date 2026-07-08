@@ -1,0 +1,59 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-6;
+  margin-bottom: $space-8;
+  flex-wrap: wrap;
+
+  &__text { max-width: 640px; }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-primary;
+    margin-bottom: $space-3;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $gradient-primary;
+      box-shadow: $glow-primary;
+    }
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    margin-bottom: $space-2;
+
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__desc {
+    color: $color-muted;
+    font-size: $fs-md;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  @include below-md {
+    flex-direction: column;
+    &__actions { width: 100%; }
+  }
+}

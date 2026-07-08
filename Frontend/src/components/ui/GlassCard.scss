@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.glass-card {
+  @include glass-card();
+  position: relative;
+
+  &--pad-none { padding: 0; }
+  &--pad-sm { padding: $space-4; }
+  &--pad-md { padding: $space-6; }
+  &--pad-lg { padding: $space-8; }
+
+  &--hoverable {
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-6px);
+      background: $color-card-hover;
+      border-color: $color-border-hover;
+    }
+  }
+
+  // glow accents applied on hover, color depends on prop
+  &--glow-primary:hover { box-shadow: $shadow-elevated, $glow-primary; }
+  &--glow-secondary:hover { box-shadow: $shadow-elevated, $glow-secondary; }
+  &--glow-accent:hover { box-shadow: $shadow-elevated, $glow-accent; }
+  &--glow-success:hover { box-shadow: $shadow-elevated, $glow-success; }
+  &--glow-default:hover { box-shadow: $shadow-elevated; }
+
+  // subtle gradient border sheen
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 50%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
