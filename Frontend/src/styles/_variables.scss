@@ -1,0 +1,126 @@
+// ============================================================
+// DESIGN SYSTEM — VARIABLES
+// Single source of truth for the entire AI SaaS theme.
+// ============================================================
+
+// ---------- Core Palette ----------
+$color-bg:          #050816;
+$color-bg-soft:      #0a0f24;
+$color-bg-elevated:  #0d1330;
+
+$color-card:        rgba(255, 255, 255, 0.05);
+$color-card-hover:   rgba(255, 255, 255, 0.08);
+$color-border:       rgba(255, 255, 255, 0.08);
+$color-border-hover: rgba(255, 255, 255, 0.16);
+
+$color-primary:      #a78bfa; // violet
+$color-secondary:    #f472b6; // pink
+$color-accent:       #60a5fa; // blue
+$color-success:      #34d399; // green
+$color-warning:      #fbbf24;
+$color-danger:       #f87171;
+
+$color-text:         #f1f5f9;
+$color-muted:        #94a3b8;
+$color-faint:        #64748b;
+
+// ---------- Gradients ----------
+$gradient-primary:     linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+$gradient-accent:      linear-gradient(135deg, $color-accent 0%, $color-primary 100%);
+$gradient-success:     linear-gradient(135deg, $color-success 0%, $color-accent 100%);
+$gradient-mesh:        radial-gradient(at 20% 20%, rgba(167, 139, 250, 0.25) 0px, transparent 50%),
+                        radial-gradient(at 80% 0%, rgba(244, 114, 182, 0.18) 0px, transparent 50%),
+                        radial-gradient(at 80% 80%, rgba(96, 165, 250, 0.18) 0px, transparent 50%),
+                        radial-gradient(at 0% 100%, rgba(167, 139, 250, 0.15) 0px, transparent 50%);
+$gradient-text:        linear-gradient(135deg, #ffffff 0%, $color-primary 50%, $color-secondary 100%);
+
+// ---------- Typography ----------
+$font-display: 'Clash Display', 'Sora', 'Inter', system-ui, sans-serif;
+$font-body:    'Inter', system-ui, -apple-system, sans-serif;
+$font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+$fs-xs:   0.75rem;
+$fs-sm:   0.875rem;
+$fs-base: 1rem;
+$fs-md:   1.125rem;
+$fs-lg:   1.25rem;
+$fs-xl:   1.5rem;
+$fs-2xl:  2rem;
+$fs-3xl:  2.5rem;
+$fs-4xl:  3.25rem;
+$fs-5xl:  4.25rem;
+
+$fw-regular:  400;
+$fw-medium:   500;
+$fw-semibold: 600;
+$fw-bold:     700;
+$fw-extrabold:800;
+
+// ---------- Spacing Scale ----------
+$space-1:  0.25rem;
+$space-2:  0.5rem;
+$space-3:  0.75rem;
+$space-4:  1rem;
+$space-5:  1.25rem;
+$space-6:  1.5rem;
+$space-8:  2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-14: 3.5rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+$space-32: 8rem;
+
+// ---------- Radius ----------
+$radius-sm:  0.5rem;
+$radius-md:  0.875rem;
+$radius-lg:  1.25rem;
+$radius-xl:  1.75rem;
+$radius-2xl: 2.5rem;
+$radius-full: 999px;
+
+// ---------- Shadows / Glow ----------
+$shadow-card:      0 8px 32px rgba(0, 0, 0, 0.35);
+$shadow-elevated:  0 20px 60px rgba(0, 0, 0, 0.45);
+$glow-primary:     0 0 40px rgba(167, 139, 250, 0.35);
+$glow-secondary:   0 0 40px rgba(244, 114, 182, 0.3);
+$glow-accent:      0 0 40px rgba(96, 165, 250, 0.3);
+$glow-success:     0 0 30px rgba(52, 211, 153, 0.3);
+
+// ---------- Blur ----------
+$blur-sm: 8px;
+$blur-md: 16px;
+$blur-lg: 24px;
+$blur-xl: 40px;
+
+// ---------- Z-index scale ----------
+$z-base:     1;
+$z-dropdown: 100;
+$z-sticky:   200;
+$z-overlay:  900;
+$z-modal:    1000;
+$z-toast:    1100;
+$z-tooltip:  1200;
+
+// ---------- Breakpoints ----------
+$bp-sm:  480px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+$bp-2xl: 1536px;
+
+// ---------- Transitions ----------
+$ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-soft:    cubic-bezier(0.4, 0, 0.2, 1);
+$ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+$transition-fast:   0.18s $ease-default;
+$transition-base:   0.3s $ease-default;
+$transition-slow:   0.55s $ease-default;
+
+// ---------- Layout ----------
+$sidebar-width: 280px;
+$sidebar-width-collapsed: 84px;
+$topbar-height: 76px;
+$content-max-width: 1320px;

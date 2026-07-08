@@ -1,0 +1,87 @@
+// ============================================================
+// GLOBAL RESET & BASE STYLES
+// ============================================================
+@use './variables' as *;
+@use './mixins' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg;
+  color: $color-text;
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol { list-style: none; }
+
+button, input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p { color: $color-muted; }
+
+::selection {
+  background: rgba($color-primary, 0.35);
+  color: $color-text;
+}
+
+html {
+  @include custom-scrollbar();
+}
+
+
+// global focus accessibility
+:focus-visible {
+  outline: 2px solid rgba($color-primary, 0.7);
+  outline-offset: 2px;
+}
+
+// utility classes used across pages
+.gradient-text { @include gradient-text(); }
+.container { @include container(); }
+
+.visually-hidden { @include visually-hidden(); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

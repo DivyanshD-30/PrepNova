@@ -1,0 +1,172 @@
+// ============================================================
+// DESIGN SYSTEM — MIXINS
+// ============================================================
+@use 'sass:math';
+@use './variables' as *;
+
+// ---------- Responsive breakpoints (mobile-first) ----------
+@mixin sm { @media (min-width: $bp-sm) { @content; } }
+@mixin md { @media (min-width: $bp-md) { @content; } }
+@mixin lg { @media (min-width: $bp-lg) { @content; } }
+@mixin xl { @media (min-width: $bp-xl) { @content; } }
+@mixin xxl { @media (min-width: $bp-2xl) { @content; } }
+
+// Max-width (desktop-first) helpers, useful for "collapse on mobile" patterns
+@mixin below-md { @media (max-width: ($bp-md - 1px)) { @content; } }
+@mixin below-lg { @media (max-width: ($bp-lg - 1px)) { @content; } }
+
+// ---------- Glassmorphism ----------
+@mixin glass($blur: $blur-md, $bg: $color-card, $border: $color-border) {
+  background: $bg;
+  border: 1px solid $border;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin glass-card($radius: $radius-lg) {
+  @include glass();
+  border-radius: $radius;
+  box-shadow: $shadow-card;
+  position: relative;
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base, background $transition-base;
+}
+
+// ---------- Glow border on hover ----------
+@mixin glow-border-hover($color: $color-primary) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba($color, 0.6), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity $transition-base;
+    pointer-events: none;
+  }
+  &:hover::before { opacity: 1; }
+}
+
+// ---------- Gradient text ----------
+@mixin gradient-text($gradient: $gradient-text) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// ---------- Flex helpers ----------
+@mixin flex($direction: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 { gap: $gap; }
+}
+
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ---------- Container ----------
+@mixin container {
+  width: 100%;
+  max-width: $content-max-width;
+  margin-inline: auto;
+  padding-inline: $space-5;
+
+  @include md { padding-inline: $space-8; }
+  @include lg { padding-inline: $space-10; }
+}
+
+// ---------- Truncate text ----------
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ---------- Scrollbar ----------
+@mixin custom-scrollbar($size: 6px) {
+  &::-webkit-scrollbar { width: $size; height: $size; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: $radius-full;
+    &:hover { background: rgba(255, 255, 255, 0.2); }
+  }
+}
+
+// ---------- Focus ring (accessibility) ----------
+@mixin focus-ring($color: $color-primary) {
+  &:focus-visible {
+    outline: 2px solid rgba($color, 0.7);
+    outline-offset: 2px;
+  }
+}
+
+// ---------- Skeleton shimmer ----------
+@mixin skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: $radius-md;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+// ---------- Button reset ----------
+@mixin button-reset {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ---------- Card hover lift ----------
+@mixin hover-lift($y: -4px) {
+  transition: transform $transition-base, box-shadow $transition-base;
+  &:hover {
+    transform: translateY($y);
+  }
+}
+
+// ---------- Visually hidden (a11y) ----------
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
