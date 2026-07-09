@@ -1,0 +1,78 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.resume-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  text-align: center;
+  padding: $space-8 $space-5;
+  border-radius: $radius-lg;
+  border: 1.5px dashed $color-border;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover, &--active {
+    border-color: rgba($color-primary, 0.5);
+    background: rgba($color-primary, 0.04);
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+    font-size: 1.4rem;
+    box-shadow: $glow-primary;
+    margin-bottom: $space-2;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+  }
+
+  &__subtitle {
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+
+  // ---------- Filled state ----------
+  &--filled {
+    flex-direction: row;
+    text-align: left;
+    padding: $space-4;
+    cursor: default;
+    border-style: solid;
+    border-color: rgba($color-success, 0.3);
+    background: rgba($color-success, 0.05);
+  }
+
+  &__file-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-success;
+    color: #fff;
+  }
+
+  &__file-info { flex: 1; min-width: 0; }
+  &__file-name { font-size: $fs-sm; font-weight: $fw-semibold; @include truncate(); }
+  &__file-size { font-size: $fs-xs; color: $color-faint; }
+
+  &__remove {
+    @include button-reset();
+    color: $color-faint;
+    flex-shrink: 0;
+    transition: color $transition-fast;
+    &:hover { color: $color-danger; }
+  }
+}

@@ -1,0 +1,220 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.generator-report {
+  &__loading-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+    @include md { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg {
+      grid-template-columns: 220px 1fr 280px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: $space-2;
+    overflow-x: auto;
+    padding-bottom: $space-1;
+
+    @include lg {
+      flex-direction: column;
+      position: sticky;
+      top: calc(#{$topbar-height} + #{$space-6});
+      align-self: start;
+    }
+  }
+
+  &__nav-item {
+    @include button-reset();
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $color-muted;
+    white-space: nowrap;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover { background: rgba(255, 255, 255, 0.05); color: $color-text; }
+
+    &.is-active {
+      background: linear-gradient(135deg, rgba($color-primary, 0.18), rgba($color-secondary, 0.1));
+      color: $color-text;
+      svg { color: $color-primary; }
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+
+    h2 { font-size: $fs-xl; }
+    span { font-size: $fs-sm; color: $color-faint; }
+  }
+
+  &__q-list, &__roadmap-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__skill-label {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    margin-bottom: $space-4;
+  }
+
+  &__skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+
+    @include lg {
+      position: sticky;
+      top: calc(#{$topbar-height} + #{$space-6});
+      align-self: start;
+    }
+  }
+}
+
+.report-q-card {
+  &__header {
+    @include button-reset();
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-5;
+    text-align: left;
+
+    svg { color: $color-muted; flex-shrink: 0; }
+  }
+
+  &__index {
+    font-family: $font-mono;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  &__question {
+    flex: 1;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $color-text;
+  }
+
+  &__body-wrap { overflow: hidden; }
+
+  &__body {
+    padding: 0 $space-5 $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    border-top: 1px solid $color-border;
+    padding-top: $space-4;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    p {
+      font-size: $fs-sm;
+      line-height: 1.7;
+      color: $color-muted;
+    }
+  }
+}
+
+.roadmap-day {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-4;
+
+    h3 { font-size: $fs-md; }
+  }
+
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: $space-3;
+      font-size: $fs-sm;
+      color: $color-muted;
+      line-height: 1.6;
+    }
+  }
+
+  &__bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $gradient-primary;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+}
+
+.match-score-card {
+  text-align: center;
+
+  &__label { font-size: $fs-sm; color: $color-muted; margin-bottom: $space-4; }
+
+  &__ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto $space-3;
+    @include flex(row, center, center);
+    font-family: $font-display;
+    font-weight: $fw-extrabold;
+    font-size: $fs-xl;
+    position: relative;
+
+    &--success { background: conic-gradient(#{$color-success} var(--score, 80%), rgba(255,255,255,0.06) 0); }
+    &--primary { background: conic-gradient(#{$color-primary} var(--score, 70%), rgba(255,255,255,0.06) 0); }
+    &--warning { background: conic-gradient(#{$color-warning} var(--score, 50%), rgba(255,255,255,0.06) 0); }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      background: $color-bg-soft;
+    }
+
+    span { position: relative; z-index: 1; }
+  }
+
+  &__pct { font-size: $fs-sm; margin-left: 2px; }
+  &__sub { font-size: $fs-xs; color: $color-faint; }
+}

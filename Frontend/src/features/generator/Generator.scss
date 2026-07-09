@@ -1,0 +1,176 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.generator {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__targeting-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-bottom: $space-5;
+
+    h3 { font-size: $fs-lg; }
+  }
+
+  &__field-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-4;
+    margin-bottom: $space-5;
+
+    @include sm { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    margin-bottom: $space-5;
+
+    &:last-child { margin-bottom: 0; }
+
+    label {
+      font-size: $fs-sm;
+      font-weight: $fw-medium;
+      color: $color-text;
+    }
+
+    input {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      padding: $space-3 $space-4;
+      font-size: $fs-sm;
+      color: $color-text;
+      transition: border-color $transition-fast, background $transition-fast;
+
+      &::placeholder { color: $color-faint; }
+      &:focus {
+        outline: none;
+        border-color: rgba($color-primary, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+  }
+
+  &__panels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__panel-header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-5;
+
+    h3 { flex: 1; font-size: $fs-lg; }
+  }
+
+  &__panel-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    background: rgba($color-primary, 0.12);
+    color: $color-primary;
+  }
+
+  &__textarea {
+    width: 100%;
+    min-height: 220px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: $space-4;
+    font-size: $fs-sm;
+    color: $color-text;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color $transition-fast, background $transition-fast;
+
+    &::placeholder { color: $color-faint; white-space: pre-line; }
+    &:focus {
+      outline: none;
+      border-color: rgba($color-primary, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &--short { min-height: 110px; }
+  }
+
+  &__char-counter {
+    text-align: right;
+    font-size: $fs-xs;
+    color: $color-faint;
+    margin-top: $space-2;
+  }
+
+  &__sub-field {
+    margin-bottom: $space-5;
+  }
+
+  &__sub-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    margin-bottom: $space-3;
+  }
+
+  &__or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: $space-5 0;
+    color: $color-faint;
+    font-size: $fs-xs;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $color-border;
+    }
+    span { padding: 0 $space-3; }
+  }
+
+  &__info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-4;
+    border-radius: $radius-md;
+    background: rgba($color-accent, 0.08);
+    border: 1px solid rgba($color-accent, 0.2);
+    font-size: $fs-xs;
+    color: $color-muted;
+
+    svg { color: $color-accent; flex-shrink: 0; margin-top: 2px; }
+    strong { color: $color-text; }
+  }
+
+  &__footer {
+    @include glass-card($radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-5 $space-6;
+    flex-wrap: wrap;
+  }
+
+  &__footer-info {
+    font-size: $fs-sm;
+    color: $color-muted;
+  }
+}
