@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.features {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-20;
+
+  &__header {
+    max-width: 640px;
+    margin: 0 auto $space-12;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__subtitle {
+    color: $color-muted;
+    font-size: $fs-md;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+
+    @include sm { grid-template-columns: repeat(2, 1fr); }
+    @include lg { grid-template-columns: repeat(3, 1fr); }
+  }
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    font-size: 1.4rem;
+    color: #fff;
+
+    &--primary { background: $gradient-primary; box-shadow: $glow-primary; }
+    &--secondary { background: linear-gradient(135deg, $color-secondary, $color-primary); box-shadow: $glow-secondary; }
+    &--accent { background: $gradient-accent; box-shadow: $glow-accent; }
+    &--success { background: $gradient-success; box-shadow: $glow-success; }
+  }
+
+  &__title {
+    font-size: $fs-lg;
+  }
+
+  &__desc {
+    font-size: $fs-sm;
+    line-height: 1.65;
+    color: $color-muted;
+  }
+}

@@ -1,0 +1,196 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  z-index: $z-base;
+  padding-top: $space-32;
+  padding-bottom: $space-20;
+
+  @include below-lg { padding-top: $space-24; }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-12;
+    align-items: center;
+
+    @include lg {
+      grid-template-columns: 1.05fr 1fr;
+    }
+  }
+
+  &__title {
+    font-size: $fs-4xl;
+    margin: $space-5 0 $space-5;
+    letter-spacing: -0.02em;
+
+    @include md { font-size: $fs-5xl; }
+  }
+
+  &__subtitle {
+    font-size: $fs-md;
+    color: $color-muted;
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: $space-8;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-4;
+    flex-wrap: wrap;
+    margin-bottom: $space-6;
+  }
+
+  &__trust {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-sm;
+    color: $color-faint;
+    svg { color: $color-success; }
+  }
+
+  // ---------- Visual mock panel ----------
+  &__visual {
+    position: relative;
+  }
+
+  &__panel {
+    @include glass-card($radius-xl);
+    padding: $space-5;
+    box-shadow: $shadow-elevated;
+  }
+
+  &__panel-header {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid $color-border;
+    margin-bottom: $space-4;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    &--red { background: #f87171; }
+    &--yellow { background: #fbbf24; }
+    &--green { background: #34d399; }
+  }
+
+  &__panel-title {
+    margin-left: $space-2;
+    font-size: $fs-xs;
+    color: $color-faint;
+    font-weight: $fw-medium;
+  }
+
+  &__chat {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    min-height: 200px;
+  }
+
+  &__bubble {
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    font-size: $fs-sm;
+    line-height: 1.5;
+    max-width: 85%;
+
+    &--ai {
+      background: rgba($color-primary, 0.12);
+      border: 1px solid rgba($color-primary, 0.25);
+      align-self: flex-start;
+      border-bottom-left-radius: $space-1;
+    }
+
+    &--user {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid $color-border;
+      align-self: flex-end;
+      border-bottom-right-radius: $space-1;
+    }
+  }
+
+  &__typing {
+    display: flex;
+    gap: 4px;
+    align-self: flex-start;
+    padding: $space-3 $space-4;
+    background: rgba($color-primary, 0.12);
+    border-radius: $radius-md;
+    border-bottom-left-radius: $space-1;
+  }
+
+  &__typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-primary;
+    animation: typing-bounce 1.2s infinite;
+    &:nth-child(2) { animation-delay: 0.15s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+  }
+
+  &__panel-footer {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    margin-top: $space-5;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border;
+  }
+
+  &__score-ring {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    @include flex(row, center, center);
+    background: conic-gradient(#{$color-success} 87%, rgba(255,255,255,0.08) 0);
+    font-weight: $fw-bold;
+    flex-shrink: 0;
+    position: relative;
+
+    span {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: $color-bg-soft;
+      @include flex(row, center, center);
+      font-size: $fs-sm;
+    }
+  }
+
+  &__score-label { font-size: $fs-sm; font-weight: $fw-semibold; color: $color-text; }
+  &__score-sub { font-size: $fs-xs; color: $color-faint; }
+
+  &__floating-card {
+    @include glass($blur-md);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    box-shadow: $shadow-card;
+
+    svg { color: $color-success; }
+
+    &--1 { top: -24px; right: -16px; }
+    &--2 { bottom: -20px; left: -20px; svg { color: $color-accent; } }
+
+    @include below-lg { display: none; }
+  }
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}

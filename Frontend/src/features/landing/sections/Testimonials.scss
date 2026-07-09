@@ -1,0 +1,73 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.testimonials {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-20;
+
+  &__header {
+    max-width: 600px;
+    margin: 0 auto $space-10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+
+    @include md { grid-template-columns: repeat(2, 1fr); }
+  }
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+    color: $color-faint;
+    font-size: 0.95rem;
+
+    .is-filled { color: $color-warning; }
+  }
+
+  &__quote {
+    font-size: $fs-md;
+    line-height: 1.7;
+    color: $color-text;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-top: auto;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    font-weight: $fw-bold;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  &__name { font-size: $fs-sm; font-weight: $fw-semibold; }
+  &__role { font-size: $fs-xs; color: $color-faint; }
+}

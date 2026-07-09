@@ -1,0 +1,87 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.how-it-works {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-20;
+
+  &__header {
+    max-width: 600px;
+    margin: 0 auto $space-14;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__timeline {
+    max-width: 720px;
+    margin-inline: auto;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, $color-primary, $color-secondary, transparent);
+      opacity: 0.35;
+
+      @include below-md { left: 23px; }
+    }
+  }
+}
+
+.how-step {
+  display: flex;
+  gap: $space-6;
+  padding-bottom: $space-10;
+  position: relative;
+
+  &:last-child { padding-bottom: 0; }
+
+  &__marker {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $color-bg-soft;
+    border: 1px solid $color-border;
+    box-shadow: $glow-primary;
+    z-index: 1;
+
+    @include below-md { width: 46px; height: 46px; }
+  }
+
+  &__number {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    @include gradient-text();
+    font-size: $fs-md;
+  }
+
+  &__content {
+    padding-top: $space-2;
+
+    h3 {
+      font-size: $fs-lg;
+      margin-bottom: $space-2;
+    }
+
+    p {
+      color: $color-muted;
+      line-height: 1.65;
+      max-width: 480px;
+    }
+  }
+}

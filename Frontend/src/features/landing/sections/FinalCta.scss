@@ -1,0 +1,34 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.final-cta {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-20;
+
+  &__panel {
+    @include glass-card($radius-2xl);
+    padding: $space-16 $space-8;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-6;
+    background: linear-gradient(135deg, rgba($color-primary, 0.08), rgba($color-secondary, 0.06));
+    box-shadow: $glow-primary;
+
+    @include below-md { padding: $space-10 $space-5; }
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    max-width: 600px;
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__subtitle {
+    color: $color-muted;
+    font-size: $fs-md;
+    max-width: 480px;
+  }
+}

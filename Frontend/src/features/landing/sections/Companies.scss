@@ -1,0 +1,46 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.companies {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-12;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  background: rgba(255, 255, 255, 0.015);
+
+  &__label {
+    text-align: center;
+    font-size: $fs-sm;
+    color: $color-faint;
+    margin-bottom: $space-6;
+    letter-spacing: 0.02em;
+  }
+
+  &__marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+
+  &__track {
+    display: flex;
+    gap: $space-16;
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  &__item {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: $fs-xl;
+    color: $color-faint;
+    white-space: nowrap;
+    transition: color $transition-base;
+    &:hover { color: $color-text; }
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

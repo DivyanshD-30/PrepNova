@@ -1,0 +1,146 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.auth-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $space-6;
+  z-index: $z-base;
+}
+
+.auth-card {
+  @include glass-card($radius-xl);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: $space-10 $space-8;
+
+  @include below-md {
+    padding: $space-8 $space-5;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+    margin-bottom: $space-8;
+  }
+
+  &__brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    box-shadow: $glow-primary;
+    color: #fff;
+  }
+
+  &__title {
+    font-size: $fs-2xl;
+    margin-bottom: $space-2;
+  }
+
+  &__subtitle {
+    color: $color-muted;
+    font-size: $fs-sm;
+    margin-bottom: $space-6;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    background: rgba($color-danger, 0.1);
+    border: 1px solid rgba($color-danger, 0.3);
+    color: $color-danger;
+    font-size: $fs-sm;
+    margin-bottom: $space-5;
+    overflow: hidden;
+  }
+
+  &__footer-text {
+    margin-top: $space-6;
+    text-align: center;
+    font-size: $fs-sm;
+    color: $color-muted;
+
+    a {
+      color: $color-primary;
+      font-weight: $fw-semibold;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    label {
+      font-size: $fs-sm;
+      font-weight: $fw-medium;
+      color: $color-text;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      padding: $space-3 $space-4 $space-3 2.75rem;
+      font-size: $fs-base;
+      color: $color-text;
+      transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+
+      &::placeholder { color: $color-faint; }
+
+      &:focus {
+        outline: none;
+        border-color: rgba($color-primary, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: $space-4;
+    color: $color-faint;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  &__toggle-visibility {
+    @include button-reset();
+    position: absolute;
+    right: $space-3;
+    color: $color-faint;
+    font-size: 1rem;
+    transition: color $transition-fast;
+    &:hover { color: $color-text; }
+  }
+}

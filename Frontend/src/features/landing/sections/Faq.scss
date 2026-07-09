@@ -1,0 +1,63 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.faq {
+  position: relative;
+  z-index: $z-base;
+  padding-block: $space-20;
+  max-width: 720px;
+
+  &__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+    margin-bottom: $space-10;
+  }
+
+  &__title {
+    font-size: $fs-3xl;
+    @include md { font-size: $fs-4xl; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+.faq-item {
+  @include glass-card($radius-md);
+  overflow: hidden;
+
+  &__question {
+    @include button-reset();
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-5;
+    text-align: left;
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    color: $color-text;
+
+    svg { color: $color-primary; flex-shrink: 0; }
+  }
+
+  &__answer-wrap { overflow: hidden; }
+
+  &__answer {
+    padding: 0 $space-5 $space-5;
+    color: $color-muted;
+    line-height: 1.7;
+    font-size: $fs-sm;
+  }
+
+  &--open {
+    border-color: rgba($color-primary, 0.3);
+  }
+}
