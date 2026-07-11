@@ -1,0 +1,127 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.practice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @include lg {
+    grid-template-columns: 1fr 300px;
+  }
+
+  &__chat-card {
+    display: flex;
+    flex-direction: column;
+    height: 640px;
+    overflow: hidden;
+  }
+
+  &__chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-4 $space-5;
+    border-bottom: 1px solid $color-border;
+    flex-wrap: wrap;
+  }
+
+  &__chat-header-left {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+
+    p { font-size: $fs-sm; font-weight: $fw-medium; color: $color-muted; }
+  }
+
+  &__live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-success;
+    box-shadow: 0 0 8px rgba($color-success, 0.6);
+    animation: live-pulse 1.6s infinite;
+  }
+
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    @include custom-scrollbar();
+  }
+
+  &__composer {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4 $space-5;
+    border-top: 1px solid $color-border;
+
+    input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $color-border;
+      border-radius: $radius-full;
+      padding: $space-3 $space-5;
+      font-size: $fs-sm;
+      color: $color-text;
+
+      &::placeholder { color: $color-faint; }
+      &:focus {
+        outline: none;
+        border-color: rgba($color-primary, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      &:disabled { opacity: 0.6; }
+    }
+  }
+
+  &__done-note {
+    font-size: $fs-sm;
+    color: $color-muted;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__tips-title { font-size: $fs-md; margin-bottom: $space-4; }
+
+  &__tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    li {
+      font-size: $fs-sm;
+      color: $color-muted;
+      line-height: 1.6;
+      padding-left: $space-4;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $color-primary;
+      }
+    }
+  }
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.voice-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+
+  &__btn {
+    @include button-reset();
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $color-muted;
+    transition: background $transition-fast, color $transition-fast;
+
+    &.is-active {
+      background: $gradient-primary;
+      color: #fff;
+      box-shadow: 0 0 14px rgba($color-primary, 0.35);
+    }
+  }
+
+  &__pulse {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-danger;
+  }
+}

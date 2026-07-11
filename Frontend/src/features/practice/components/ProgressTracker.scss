@@ -1,0 +1,35 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.progress-tracker {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-3;
+  }
+
+  &__label { font-size: $fs-sm; font-weight: $fw-semibold; color: $color-text; }
+  &__count { font-size: $fs-sm; color: $color-faint; font-family: $font-mono; }
+
+  &__track {
+    height: 8px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    margin-bottom: $space-3;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    box-shadow: 0 0 10px rgba($color-primary, 0.5);
+  }
+
+  &__topic {
+    font-size: $fs-xs;
+    color: $color-faint;
+    span { color: $color-primary; font-weight: $fw-medium; }
+  }
+}

@@ -1,0 +1,45 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  align-self: flex-start;
+
+  &__avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+    box-shadow: $glow-primary;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+    padding: $space-3 $space-4;
+    background: rgba($color-primary, 0.1);
+    border: 1px solid rgba($color-primary, 0.22);
+    border-radius: $radius-md;
+    border-top-left-radius: $space-1;
+
+    span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $color-primary;
+      animation: typing-pulse 1.2s infinite;
+      &:nth-child(2) { animation-delay: 0.15s; }
+      &:nth-child(3) { animation-delay: 0.3s; }
+    }
+  }
+}
+
+@keyframes typing-pulse {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}

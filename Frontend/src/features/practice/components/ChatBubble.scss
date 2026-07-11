@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.chat-bubble {
+  display: flex;
+  gap: $space-3;
+  max-width: 85%;
+
+  &--ai {
+    align-self: flex-start;
+  }
+
+  &--user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+  }
+
+  &__avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  &--ai &__avatar { background: $gradient-primary; box-shadow: $glow-primary; }
+  &--user &__avatar { background: $gradient-accent; box-shadow: $glow-accent; }
+
+  &__content {
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    font-size: $fs-sm;
+    line-height: 1.6;
+  }
+
+  &--ai &__content {
+    background: rgba($color-primary, 0.1);
+    border: 1px solid rgba($color-primary, 0.22);
+    border-top-left-radius: $space-1;
+  }
+
+  &--user &__content {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid $color-border;
+    border-top-right-radius: $space-1;
+  }
+
+  @include below-md { max-width: 92%; }
+}
