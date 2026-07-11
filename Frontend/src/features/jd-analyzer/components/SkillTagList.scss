@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.skill-tag-list {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+  &__empty { font-size: $fs-sm; color: $color-faint; }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  border-radius: $radius-full;
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  border: 1px solid transparent;
+
+  &--matched {
+    background: rgba($color-success, 0.1);
+    border-color: rgba($color-success, 0.3);
+    color: $color-success;
+  }
+
+  &--missing {
+    background: rgba($color-danger, 0.08);
+    border-color: rgba($color-danger, 0.25);
+    color: $color-danger;
+  }
+
+  &--nice-to-have {
+    background: rgba($color-accent, 0.1);
+    border-color: rgba($color-accent, 0.3);
+    color: $color-accent;
+  }
+}

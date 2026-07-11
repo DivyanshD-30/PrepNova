@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.suggestions-list {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+}
+
+.suggestion-item {
+  padding: $space-4;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+    margin-bottom: $space-2;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+  }
+
+  &__detail {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.6;
+  }
+}

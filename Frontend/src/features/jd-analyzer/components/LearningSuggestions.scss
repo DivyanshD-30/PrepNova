@@ -1,0 +1,59 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.learning-suggestions {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-lg;
+    margin-bottom: $space-5;
+    svg { color: $color-primary; }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+}
+
+.learning-item {
+  padding: $space-4;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+
+  &__header { margin-bottom: $space-3; }
+
+  &__reason {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.6;
+    margin-bottom: $space-3;
+  }
+
+  &__resources {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    li {
+      font-size: $fs-xs;
+      color: $color-accent;
+      padding-left: $space-4;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $color-accent;
+      }
+    }
+  }
+}

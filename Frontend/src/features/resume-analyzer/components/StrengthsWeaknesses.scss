@@ -1,0 +1,47 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.strengths-weaknesses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-5;
+
+  @include md { grid-template-columns: 1fr 1fr; }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-md;
+    margin-bottom: $space-4;
+
+    &--success { color: $color-success; svg { color: $color-success; } }
+    &--warning { color: $color-warning; svg { color: $color-warning; } }
+  }
+
+  &__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    li {
+      font-size: $fs-sm;
+      color: $color-muted;
+      line-height: 1.6;
+      padding-left: $space-4;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.5;
+      }
+    }
+  }
+}

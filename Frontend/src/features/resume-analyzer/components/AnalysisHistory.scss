@@ -1,0 +1,29 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.analysis-history {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+}
+
+.analysis-history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba(255, 255, 255, 0.04); }
+
+  &__main { flex: 1; min-width: 0; }
+  &__name { font-size: $fs-sm; font-weight: $fw-medium; @include truncate(); }
+  &__date { font-size: $fs-xs; color: $color-faint; }
+}

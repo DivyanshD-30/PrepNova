@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.resume-analyzer {
+  &__upload-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1fr 320px; }
+  }
+
+  &__upload-card {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__analyzing {
+    text-align: center;
+    padding: $space-16 $space-6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__pulse {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+    font-size: 1.6rem;
+    box-shadow: $glow-primary;
+  }
+
+  &__analyzing-title { font-size: $fs-lg; font-weight: $fw-semibold; }
+  &__analyzing-sub { font-size: $fs-sm; color: $color-muted; max-width: 380px; }
+
+  &__results {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1fr 320px; }
+  }
+
+  &__results-main {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    min-width: 0;
+  }
+
+  &__results-side {
+    @include lg {
+      position: sticky;
+      top: calc(#{$topbar-height} + #{$space-6});
+      align-self: start;
+    }
+  }
+}

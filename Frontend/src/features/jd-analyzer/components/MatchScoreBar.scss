@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.match-score-bar {
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-4;
+    margin-bottom: $space-5;
+    flex-wrap: wrap;
+  }
+
+  &__label { font-size: $fs-sm; color: $color-muted; margin-bottom: $space-1; }
+  &__summary { font-size: $fs-md; font-weight: $fw-semibold; color: $color-text; max-width: 420px; }
+
+  &__track {
+    height: 12px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    margin-bottom: $space-3;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+
+    &--success { background: $gradient-success; }
+    &--primary { background: $gradient-primary; }
+    &--warning { background: linear-gradient(135deg, $color-warning, $color-secondary); }
+  }
+
+  &__pct {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+  }
+}
