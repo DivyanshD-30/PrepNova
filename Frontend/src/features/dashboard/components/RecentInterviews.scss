@@ -1,0 +1,69 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.recent-interviews {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+
+    h3 { font-size: $fs-lg; }
+  }
+
+  &__view-all {
+    @include button-reset();
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $fs-sm;
+    color: $color-primary;
+    font-weight: $fw-medium;
+    transition: opacity $transition-fast;
+    &:hover { opacity: 0.8; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+}
+
+.recent-interview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  padding: $space-4 $space-2;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba(255, 255, 255, 0.03); }
+  &:not(:last-child) { border-bottom: 1px solid $color-border; }
+
+  &__role {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+  }
+
+  &__company {
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-shrink: 0;
+  }
+
+  &__date {
+    font-size: $fs-xs;
+    color: $color-faint;
+    white-space: nowrap;
+  }
+}

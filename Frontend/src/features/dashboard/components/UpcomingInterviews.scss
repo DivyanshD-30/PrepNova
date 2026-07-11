@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.upcoming-interviews {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+.upcoming-row {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-accent;
+    color: #fff;
+  }
+
+  &__main { flex: 1; min-width: 0; }
+  &__role { font-size: $fs-sm; font-weight: $fw-semibold; @include truncate(); }
+  &__company { font-size: $fs-xs; color: $color-faint; }
+
+  &__time {
+    text-align: right;
+    font-size: $fs-xs;
+    color: $color-muted;
+    flex-shrink: 0;
+    p:first-child { font-weight: $fw-semibold; color: $color-text; }
+  }
+}

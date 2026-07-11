@@ -1,0 +1,24 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.score-trend-chart {
+  &__header {
+    margin-bottom: $space-5;
+
+    h3 { font-size: $fs-lg; margin-bottom: $space-1; }
+    p { font-size: $fs-sm; color: $color-muted; }
+  }
+
+  &__canvas {
+    margin-left: -$space-2;
+  }
+}
+
+.score-tooltip {
+  @include glass($blur-md);
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+
+  &__label { font-size: $fs-xs; color: $color-faint; }
+  &__value { font-size: $fs-sm; font-weight: $fw-semibold; color: $color-primary; }
+}

@@ -1,0 +1,52 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.xp-bar {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    margin-bottom: $space-4;
+    flex-wrap: wrap;
+  }
+
+  &__level {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__level-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    background: linear-gradient(135deg, $color-secondary, $color-primary);
+    box-shadow: $glow-secondary;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  &__level-title { font-size: $fs-md; font-weight: $fw-bold; }
+  &__level-sub { font-size: $fs-xs; color: $color-faint; }
+
+  &__remaining {
+    font-size: $fs-xs;
+    color: $color-muted;
+  }
+
+  &__track {
+    height: 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    background: linear-gradient(90deg, $color-secondary, $color-primary);
+    box-shadow: 0 0 12px rgba($color-primary, 0.5);
+  }
+}

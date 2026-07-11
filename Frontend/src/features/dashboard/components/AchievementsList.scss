@@ -1,0 +1,46 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.achievements-list {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+.achievement-row {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  opacity: 0.5;
+  transition: opacity $transition-fast, background $transition-fast;
+
+  &.is-unlocked {
+    opacity: 1;
+    background: rgba($color-primary, 0.05);
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: rgba(255, 255, 255, 0.06);
+    color: $color-faint;
+  }
+
+  &.is-unlocked &__icon {
+    background: $gradient-primary;
+    color: #fff;
+    box-shadow: $glow-primary;
+  }
+
+  &__title { font-size: $fs-sm; font-weight: $fw-semibold; color: $color-text; }
+  &__desc { font-size: $fs-xs; color: $color-faint; }
+}

@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.stat-card {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-4;
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    font-size: 1.2rem;
+    color: #fff;
+
+    &--primary { background: $gradient-primary; box-shadow: $glow-primary; }
+    &--secondary { background: linear-gradient(135deg, $color-secondary, $color-primary); box-shadow: $glow-secondary; }
+    &--accent { background: $gradient-accent; box-shadow: $glow-accent; }
+    &--success { background: $gradient-success; box-shadow: $glow-success; }
+  }
+
+  &__trend {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    padding: 0.2rem $space-2;
+    border-radius: $radius-full;
+
+    &--up { color: $color-success; background: rgba($color-success, 0.12); }
+    &--down { color: $color-danger; background: rgba($color-danger, 0.12); }
+    &--neutral { color: $color-muted; background: rgba(255, 255, 255, 0.06); }
+  }
+
+  &__value {
+    font-family: $font-display;
+    font-size: $fs-2xl;
+    font-weight: $fw-extrabold;
+    margin-bottom: $space-1;
+  }
+
+  &__label {
+    font-size: $fs-sm;
+    color: $color-muted;
+  }
+}
