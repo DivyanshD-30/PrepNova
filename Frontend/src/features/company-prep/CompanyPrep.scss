@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.company-prep {
+  &__results {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  &__main, &__side {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    min-width: 0;
+  }
+
+  &__side {
+    @include lg {
+      position: sticky;
+      top: calc(#{$topbar-height} + #{$space-6});
+      align-self: start;
+    }
+  }
+}

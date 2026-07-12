@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.star-breakdown {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__bars {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 90px 1fr 32px;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__label {
+    font-size: $fs-sm;
+    color: $color-muted;
+  }
+
+  &__track {
+    height: 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    box-shadow: 0 0 10px rgba($color-primary, 0.4);
+  }
+
+  &__value {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    text-align: right;
+  }
+}

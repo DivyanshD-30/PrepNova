@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.company-overview {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    margin-bottom: $space-5;
+
+    h2 { font-size: $fs-xl; margin-bottom: $space-2; }
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-lg;
+    flex-shrink: 0;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+    font-weight: $fw-bold;
+    font-size: $fs-xl;
+    box-shadow: $glow-primary;
+  }
+
+  &__about {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.7;
+    margin-bottom: $space-5;
+  }
+
+  &__culture {
+    padding: $space-4;
+    border-radius: $radius-md;
+    background: rgba($color-accent, 0.06);
+    border: 1px solid rgba($color-accent, 0.18);
+
+    p:last-child {
+      font-size: $fs-sm;
+      color: $color-muted;
+      line-height: 1.65;
+    }
+  }
+
+  &__culture-label {
+    font-size: $fs-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $color-accent;
+    font-weight: $fw-semibold;
+    margin-bottom: $space-2;
+  }
+}

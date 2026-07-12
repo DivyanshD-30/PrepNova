@@ -1,0 +1,31 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.past-questions {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+}
+
+.past-question-row {
+  padding: $space-4;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+
+  &__top {
+    display: flex;
+    gap: $space-2;
+    margin-bottom: $space-3;
+  }
+
+  &__text {
+    font-size: $fs-sm;
+    color: $color-text;
+    line-height: 1.6;
+  }
+}

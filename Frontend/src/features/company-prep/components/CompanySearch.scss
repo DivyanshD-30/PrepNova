@@ -1,0 +1,80 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.company-search {
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-2 $space-2 $space-2 $space-5;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $color-border;
+    margin-bottom: $space-8;
+    transition: border-color $transition-fast;
+
+    &:focus-within { border-color: rgba($color-primary, 0.5); }
+  }
+
+  &__icon { color: $color-faint; flex-shrink: 0; }
+
+  &__form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $color-text;
+    font-size: $fs-sm;
+    padding: $space-2 0;
+    &::placeholder { color: $color-faint; }
+  }
+
+  &__form button {
+    @include button-reset();
+    padding: $space-3 $space-6;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    color: #fff;
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    flex-shrink: 0;
+    transition: opacity $transition-fast;
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+
+  &__label {
+    font-size: $fs-sm;
+    color: $color-faint;
+    margin-bottom: $space-5;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-4;
+
+    @include sm { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+    text-align: center;
+    cursor: pointer;
+
+    p { font-size: $fs-sm; font-weight: $fw-medium; }
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: $gradient-accent;
+    color: #fff;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+  }
+}

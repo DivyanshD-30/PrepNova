@@ -1,0 +1,52 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.salary-table {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-lg;
+    margin-bottom: $space-5;
+    svg { color: $color-success; }
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    margin-bottom: $space-4;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: $space-3;
+    padding: $space-3 $space-2;
+    font-size: $fs-sm;
+    color: $color-muted;
+
+    &:not(:last-child) { border-bottom: 1px solid $color-border; }
+
+    &--head {
+      font-size: $fs-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: $color-faint;
+      font-weight: $fw-semibold;
+    }
+  }
+
+  &__range {
+    color: $color-success;
+    font-weight: $fw-semibold;
+    font-family: $font-mono;
+    font-size: $fs-xs;
+  }
+
+  &__disclaimer {
+    font-size: $fs-xs;
+    color: $color-faint;
+    line-height: 1.5;
+  }
+}

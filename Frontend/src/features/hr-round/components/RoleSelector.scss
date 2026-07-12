@@ -1,0 +1,60 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.role-selector {
+  max-width: 520px;
+  margin-inline: auto;
+
+  &__intro {
+    color: $color-muted;
+    font-size: $fs-sm;
+    line-height: 1.6;
+    margin-bottom: $space-5;
+  }
+
+  &__input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: $space-3 $space-4;
+    font-size: $fs-sm;
+    color: $color-text;
+    margin-bottom: $space-4;
+
+    &::placeholder { color: $color-faint; }
+    &:focus {
+      outline: none;
+      border-color: rgba($color-primary, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  &__suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-bottom: $space-6;
+  }
+
+  &__chip {
+    @include button-reset();
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    font-size: $fs-xs;
+    color: $color-muted;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $color-border;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: $color-border-hover;
+      color: $color-text;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

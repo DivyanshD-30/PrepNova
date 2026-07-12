@@ -1,0 +1,38 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.behavioral-history {
+  &__title { font-size: $fs-lg; margin-bottom: $space-5; }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+}
+
+.behavioral-history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  padding: $space-3 $space-2;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba(255, 255, 255, 0.03); }
+  &:not(:last-child) { border-bottom: 1px solid $color-border; }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    min-width: 0;
+  }
+
+  &__question {
+    font-size: $fs-sm;
+    color: $color-text;
+    @include truncate(2);
+  }
+}
