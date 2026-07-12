@@ -1,0 +1,75 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.test-case-panel {
+  &__title { font-size: $fs-md; margin-bottom: $space-4; }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__hidden-note {
+    margin-top: $space-4;
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+}
+
+.test-case-static {
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  font-family: $font-mono;
+  font-size: $fs-xs;
+
+  p {
+    margin-bottom: $space-1;
+    color: $color-muted;
+    &:last-child { margin-bottom: 0; }
+  }
+
+  span { color: $color-faint; margin-right: $space-2; }
+}
+
+.test-result {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  border: 1px solid;
+
+  &--pass {
+    background: rgba($color-success, 0.06);
+    border-color: rgba($color-success, 0.25);
+    .test-result__icon { color: $color-success; }
+  }
+
+  &--fail {
+    background: rgba($color-danger, 0.06);
+    border-color: rgba($color-danger, 0.25);
+    .test-result__icon { color: $color-danger; }
+  }
+
+  &__icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__case {
+    font-family: $font-mono;
+    font-size: $fs-xs;
+    color: $color-text;
+    margin-bottom: $space-1;
+  }
+
+  &__reasoning {
+    font-size: $fs-xs;
+    color: $color-muted;
+    line-height: 1.5;
+  }
+}

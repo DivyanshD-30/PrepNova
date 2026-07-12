@@ -1,0 +1,130 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.coding-round {
+  &__list-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1fr 300px; }
+  }
+
+  &__list-side {
+    @include lg {
+      position: sticky;
+      top: calc(#{$topbar-height} + #{$space-6});
+      align-self: start;
+    }
+  }
+
+  &__solving {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include lg { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__problem-panel, &__editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    min-width: 0;
+  }
+
+  &__problem-meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-5;
+    flex-wrap: wrap;
+  }
+
+  &__description {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.7;
+    margin-bottom: $space-5;
+    white-space: pre-line;
+  }
+
+  &__examples {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    margin-bottom: $space-5;
+  }
+
+  &__example {
+    padding: $space-3;
+    border-radius: $radius-md;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid $color-border;
+    font-family: $font-mono;
+    font-size: $fs-xs;
+
+    p { margin-bottom: $space-1; color: $color-muted; }
+    span { color: $color-faint; margin-right: $space-2; }
+
+    &-explain {
+      font-family: $font-body;
+      color: $color-faint;
+      font-style: italic;
+    }
+  }
+
+  &__constraints-title {
+    font-size: $fs-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $color-faint;
+    margin-bottom: $space-2;
+  }
+
+  &__constraints ul {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    li {
+      font-size: $fs-xs;
+      color: $color-muted;
+      font-family: $font-mono;
+    }
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    margin-bottom: $space-4;
+    flex-wrap: wrap;
+  }
+
+  &__result-score {
+    font-family: $font-display;
+    font-size: $fs-3xl;
+    font-weight: $fw-extrabold;
+    @include gradient-text();
+  }
+
+  &__result-sub {
+    font-size: $fs-sm;
+    color: $color-muted;
+  }
+
+  &__result-feedback {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+}

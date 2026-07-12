@@ -1,0 +1,74 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.code-editor {
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-2 $space-4;
+    border-bottom: 1px solid $color-border;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  &__lang {
+    font-size: $fs-xs;
+    font-family: $font-mono;
+    color: $color-primary;
+    font-weight: $fw-medium;
+  }
+
+  &__lines {
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+
+  &__body {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    @include custom-scrollbar();
+  }
+
+  &__gutter {
+    display: flex;
+    flex-direction: column;
+    padding: $space-4 $space-2;
+    text-align: right;
+    user-select: none;
+    flex-shrink: 0;
+
+    span {
+      font-family: $font-mono;
+      font-size: $fs-xs;
+      line-height: 1.6;
+      color: $color-faint;
+      padding-right: $space-2;
+    }
+  }
+
+  &__textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: $space-4 $space-4 $space-4 0;
+    font-family: $font-mono;
+    font-size: $fs-sm;
+    line-height: 1.6;
+    color: $color-text;
+    white-space: pre;
+    min-height: 320px;
+
+    &::placeholder { color: $color-faint; }
+  }
+}

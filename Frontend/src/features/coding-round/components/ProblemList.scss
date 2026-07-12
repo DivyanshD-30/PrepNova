@@ -1,0 +1,66 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.problem-list {
+  &__filters {
+    display: flex;
+    gap: $space-3;
+    margin-bottom: $space-6;
+    flex-wrap: wrap;
+
+    select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      padding: $space-2 $space-4;
+      font-size: $fs-sm;
+      color: $color-text;
+      cursor: pointer;
+
+      &:focus { outline: none; border-color: rgba($color-primary, 0.5); }
+
+      option { background: $color-bg-soft; color: $color-text; }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+
+    @include sm { grid-template-columns: repeat(2, 1fr); }
+    @include lg { grid-template-columns: repeat(3, 1fr); }
+  }
+}
+
+.problem-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  cursor: pointer;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__points {
+    font-size: $fs-xs;
+    color: $color-faint;
+    font-family: $font-mono;
+  }
+
+  &__title {
+    font-size: $fs-md;
+    line-height: 1.4;
+  }
+
+  &__topic {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+}

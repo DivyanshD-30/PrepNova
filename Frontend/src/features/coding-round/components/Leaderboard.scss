@@ -1,0 +1,52 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.leaderboard {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-lg;
+    margin-bottom: $space-5;
+    svg { color: $color-warning; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-2;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba(255, 255, 255, 0.03); }
+  &:not(:last-child) { border-bottom: 1px solid $color-border; }
+
+  &__rank {
+    width: 24px;
+    font-weight: $fw-bold;
+    color: $color-faint;
+    font-family: $font-mono;
+  }
+
+  &__name {
+    flex: 1;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    @include truncate();
+  }
+
+  &__score {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-primary;
+    font-family: $font-mono;
+  }
+}
