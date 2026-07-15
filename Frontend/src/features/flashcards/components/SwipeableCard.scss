@@ -1,0 +1,95 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.swipeable-card {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  cursor: grab;
+  touch-action: pan-y;
+
+  &:active { cursor: grabbing; }
+
+  &__inner {
+    position: relative;
+    height: 320px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+
+    &.is-flipped { transform: rotateY(180deg); }
+  }
+
+  &__face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: $radius-xl;
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    @include glass-card();
+
+    &--front { background: rgba($color-primary, 0.06); }
+    &--back {
+      background: rgba($color-accent, 0.08);
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+  }
+
+  &__flip-hint {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+
+  &__text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: $fs-lg;
+    line-height: 1.6;
+    color: $color-text;
+    padding: $space-2;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: $space-4;
+    margin-top: $space-5;
+  }
+
+  &__action {
+    @include button-reset();
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $color-border;
+    color: $color-muted;
+    font-size: 1.1rem;
+    transition: all $transition-fast;
+
+    &:hover { border-color: $color-border-hover; color: $color-text; }
+
+    &.is-active {
+      background: $gradient-primary;
+      color: #fff;
+      border-color: transparent;
+      box-shadow: $glow-primary;
+    }
+  }
+}

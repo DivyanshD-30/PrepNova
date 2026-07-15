@@ -1,0 +1,43 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.saved-cards-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+
+  @include md { grid-template-columns: repeat(2, 1fr); }
+}
+
+.saved-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__icons {
+    margin-left: auto;
+    display: flex;
+    gap: $space-2;
+
+    .is-favorite { color: $color-warning; }
+    .is-bookmarked { color: $color-accent; }
+  }
+
+  &__front {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: $color-text;
+  }
+
+  &__back {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.6;
+  }
+}

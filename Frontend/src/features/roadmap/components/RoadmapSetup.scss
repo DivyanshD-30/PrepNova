@@ -1,0 +1,43 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.roadmap-setup {
+  max-width: 560px;
+  margin-inline: auto;
+
+  &__intro {
+    color: $color-muted;
+    font-size: $fs-sm;
+    line-height: 1.6;
+    margin-bottom: $space-6;
+  }
+
+  &__field {
+    margin-bottom: $space-5;
+
+    label {
+      display: block;
+      font-size: $fs-sm;
+      font-weight: $fw-medium;
+      color: $color-text;
+      margin-bottom: $space-2;
+    }
+
+    input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      padding: $space-3 $space-4;
+      font-size: $fs-sm;
+      color: $color-text;
+
+      &::placeholder { color: $color-faint; }
+      &:focus {
+        outline: none;
+        border-color: rgba($color-primary, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+  }
+}

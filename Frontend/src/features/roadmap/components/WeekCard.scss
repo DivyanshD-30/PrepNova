@@ -1,0 +1,80 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.week-card {
+  transition: border-color $transition-base;
+
+  &--done {
+    border-color: rgba($color-success, 0.3) !important;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-4;
+  }
+
+  &__progress {
+    font-size: $fs-xs;
+    color: $color-faint;
+    font-family: $font-mono;
+  }
+
+  &__goal {
+    font-size: $fs-lg;
+    margin-bottom: $space-4;
+    line-height: 1.4;
+  }
+
+  &__focus-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-bottom: $space-5;
+  }
+
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+}
+
+.week-task {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  &__checkbox {
+    @include button-reset();
+    width: 22px;
+    height: 22px;
+    border-radius: $radius-sm;
+    border: 1.5px solid $color-border-hover;
+    @include flex(row, center, center);
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 0.75rem;
+    transition: background $transition-fast, border-color $transition-fast;
+
+    &:hover { border-color: $color-primary; }
+  }
+
+  &--done &__checkbox {
+    background: $gradient-success;
+    border-color: transparent;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    color: $color-text;
+    transition: color $transition-fast, opacity $transition-fast;
+  }
+
+  &--done &__title {
+    color: $color-faint;
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+}

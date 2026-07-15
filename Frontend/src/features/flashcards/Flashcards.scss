@@ -1,0 +1,31 @@
+.flashcards {
+  &__topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  &__topic-pill {
+    padding: 0.3rem 0.85rem; border-radius: 99px; font-size: 0.8rem; font-weight: 500;
+    border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.2s;
+    &:hover { border-color: var(--text-accent); color: var(--text-accent); }
+    &--active { background: var(--text-accent); color: #fff; border-color: var(--text-accent); }
+  }
+  &__counter { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+  &__card-wrap {
+    perspective: 1200px; cursor: pointer; max-width: 680px; margin: 0 auto 1.5rem;
+    &--flipped .flashcards__card-inner { transform: rotateY(180deg); }
+  }
+  &__card-inner { position: relative; min-height: 260px; transition: transform 0.5s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+  &__card {
+    position: absolute; inset: 0; backface-visibility: hidden; display: flex; flex-direction: column;
+    &--back { transform: rotateY(180deg); }
+  }
+  &__card-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; }
+  &__question { font-size: 1.1rem; font-weight: 500; line-height: 1.6; color: var(--text-primary); flex: 1; }
+  &__answer { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); flex: 1; }
+  &__hint { font-size: 0.78rem; color: var(--text-muted); margin-top: auto; }
+  &__fav {
+    margin-left: auto; background: none; border: none; cursor: pointer; padding: 4px;
+    color: var(--text-muted); transition: color 0.2s; font-size: 1.1rem;
+    &:hover { color: #e05; }
+    &--active { color: #e05; }
+  }
+  &__nav { display: flex; justify-content: center; gap: 0.75rem; }
+  &__empty { text-align: center; color: var(--text-muted); }
+}

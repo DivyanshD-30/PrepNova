@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.progress-overview {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    margin-bottom: $space-4;
+    flex-wrap: wrap;
+  }
+
+  &__role {
+    font-size: $fs-lg;
+    font-weight: $fw-bold;
+    margin-bottom: $space-1;
+  }
+
+  &__sub {
+    font-size: $fs-xs;
+    color: $color-faint;
+  }
+
+  &__pct {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-display;
+    font-size: $fs-xl;
+    font-weight: $fw-extrabold;
+    color: $color-primary;
+  }
+
+  &__track {
+    height: 10px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    margin-bottom: $space-4;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    box-shadow: 0 0 10px rgba($color-primary, 0.5);
+  }
+
+  &__overview {
+    font-size: $fs-sm;
+    color: $color-muted;
+    line-height: 1.6;
+  }
+}

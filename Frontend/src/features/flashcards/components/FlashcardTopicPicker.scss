@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.flashcard-topic-picker {
+  &__intro {
+    color: $color-muted;
+    margin-bottom: $space-8;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-5;
+
+    @include sm { grid-template-columns: repeat(3, 1fr); }
+    @include lg { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+    text-align: center;
+    cursor: pointer;
+
+    p { font-size: $fs-sm; font-weight: $fw-semibold; }
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-md;
+    @include flex(row, center, center);
+    background: $gradient-primary;
+    color: #fff;
+    font-size: 1.3rem;
+    box-shadow: $glow-primary;
+  }
+}
