@@ -1,0 +1,37 @@
+.subscription {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+    @media (max-width: 900px) { grid-template-columns: 1fr; max-width: 420px; }
+  }
+
+  &__card { position: relative; }
+  &__card--highlighted { transform: translateY(-6px); }
+
+  &__popular {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--text-accent); color: #fff; font-size: 0.72rem; font-weight: 600;
+    padding: 3px 12px; border-radius: 99px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  &__plan-icon { font-size: 1.4rem; color: var(--text-accent); margin-bottom: 0.75rem; }
+  &__plan-name { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; }
+  &__plan-desc { font-size: 0.825rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5; }
+
+  &__price { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 1.25rem; }
+  &__price-currency { font-size: 1rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; }
+  &__price-amount { font-size: 2rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+  &__price-cycle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+
+  &__features { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  &__feature { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
+  &__feature-icon { color: var(--text-accent); font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+
+  &__note {
+    text-align: center;
+    p { font-size: 0.82rem; color: var(--text-muted); }
+  }
+}
